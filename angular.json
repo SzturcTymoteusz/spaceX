@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "projects": {
+    "space-x": {
+      "projectType": "application",
+      "root": "apps/space-x",
+      "sourceRoot": "apps/space-x/src",
+      "prefix": "space-x",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/space-x",
+            "index": "apps/space-x/src/index.html",
+            "main": "apps/space-x/src/main.ts",
+            "polyfills": "apps/space-x/src/polyfills.ts",
+            "tsConfig": "apps/space-x/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/space-x/src/favicon.ico",
+              "apps/space-x/src/assets"
+            ],
+            "styles": ["apps/space-x/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/space-x/src/environments/environment.ts",
+                  "with": "apps/space-x/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "space-x:build:production"
+            },
+            "development": {
+              "browserTarget": "space-x:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "space-x:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/space-x/src/**/*.ts",
+              "apps/space-x/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/space-x"],
+          "options": {
+            "jestConfig": "apps/space-x/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "space-x-e2e": {
+      "root": "apps/space-x-e2e",
+      "sourceRoot": "apps/space-x-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/space-x-e2e/cypress.json",
+            "devServerTarget": "space-x:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "space-x:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/space-x-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["space-x"]
+    }
+  }
+}
