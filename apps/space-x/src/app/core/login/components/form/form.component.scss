@@ -1,0 +1,26 @@
+.form {
+  width: 100%;
+  margin-top: 24px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+mat-form-field {
+  &.ng-invalid.ng-touched,
+  .mat-form-field-invalid {
+    animation: error-show;
+    animation-duration: 0.3s;
+    margin-bottom: 25px;
+  }
+}
+
+@keyframes error-show {
+  from {
+    margin-bottom: 0;
+  }
+  to {
+    margin-bottom: 25px;
+  }
+}

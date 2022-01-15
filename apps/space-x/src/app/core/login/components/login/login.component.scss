@@ -1,0 +1,28 @@
+.container {
+  height: 100%;
+  background-image: url("https://spacex.com.pl/files/2021-04/spacex-lunar-starship-on-moon.jpg?ea23fd679e");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .login {
+    box-sizing: border-box;
+    width: 300px;
+    opacity: 0.85;
+    background-color: white;
+    padding: 24px;
+
+
+    .title {
+      font-size: 36px;
+      font-weight: bold;
+    }
+
+    .login-button {
+      width: 100%;
+      background-color: #606569;
+      color: white;
+    }
+  }
+}

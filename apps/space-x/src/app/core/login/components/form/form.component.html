@@ -1,0 +1,27 @@
+<form [formGroup]="loginForm.form" class="form">
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Email</mat-label>
+    <input
+      [formControl]="loginForm.email"
+      matInput
+      type="text"
+    />
+    <mat-error *ngIf="loginForm.email.hasError('required')">Email is required</mat-error>
+    <mat-error *ngIf="loginForm.email.hasError('email') && !loginForm.email.hasError('required')">Email is invalid
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Password</mat-label>
+    <input
+      [formControl]="loginForm.password"
+      matInput
+      type="password"
+    />
+    <mat-error *ngIf="loginForm.password.hasError('required')">Password is required</mat-error>
+    <mat-error *ngIf="loginForm.password.hasError('invalidCredentials')">The email or the password that you've entered
+      is
+      incorrect
+    </mat-error>
+  </mat-form-field>
+</form>

@@ -9,7 +9,9 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/space-x",
             "index": "apps/space-x/src/index.html",
@@ -21,7 +23,10 @@
               "apps/space-x/src/favicon.ico",
               "apps/space-x/src/assets"
             ],
-            "styles": ["apps/space-x/src/styles.scss"],
+            "styles": [
+              "apps/space-x/src/styles.scss",
+              "apps/space-x/src/deeppurple-amber.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -86,7 +91,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/space-x"],
+          "outputs": [
+            "coverage/apps/space-x"
+          ],
           "options": {
             "jestConfig": "apps/space-x/jest.config.js",
             "passWithNoTests": true
@@ -114,14 +121,20 @@
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["apps/space-x-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/space-x-e2e/**/*.{js,ts}"
+            ]
           }
         }
       },
       "tags": [],
-      "implicitDependencies": ["space-x"]
+      "implicitDependencies": [
+        "space-x"
+      ]
     }
   }
 }
