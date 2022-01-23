@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="header">
+    <div class="title">
+      {{ launch.name}}
+    </div>
+
+    <button (click)="goBack()" class="backButton" mat-button>
+      Back
+    </button>
+  </div>
+
+  <div *ngIf="launch.links.patch.small" class="image">
+    <img [src]="launch.links.patch.small">
+  </div>
+
+  <div *ngIf="launch.details" class="description">
+    {{ launch.details}}
+  </div>
+
+  <div *ngIf="launch.success !== null" class="success">
+    Success:
+    <mat-icon [ngClass]="successFilter.filter(launch.success)">
+      {{successFilter.filter(launch.success)}}
+    </mat-icon>
+  </div>
+
+  <div class="date-local">
+    Date local: {{launch.date_local | date}}
+  </div>
+
+</div>

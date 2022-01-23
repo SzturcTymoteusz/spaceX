@@ -1,8 +1,9 @@
 <form [formGroup]="loginForm.form" class="form">
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Email</mat-label>
+  <mat-form-field appearance="outline" class="full-width" id="email-control">
+    <mat-label id="email-label">Email</mat-label>
     <input
       [formControl]="loginForm.email"
+      id="email-input"
       matInput
       type="text"
     />
@@ -11,10 +12,11 @@
     </mat-error>
   </mat-form-field>
 
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Password</mat-label>
+  <mat-form-field appearance="outline" class="full-width" id="password-control">
+    <mat-label id="password-label">Password</mat-label>
     <input
       [formControl]="loginForm.password"
+      id="password-input"
       matInput
       type="password"
     />

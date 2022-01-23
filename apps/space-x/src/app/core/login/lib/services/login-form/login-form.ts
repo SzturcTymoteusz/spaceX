@@ -12,4 +12,6 @@ export abstract class LoginForm {
   abstract get email(): FormControl;
 
   abstract get password(): FormControl;
+
+  abstract reset(): void;
 }

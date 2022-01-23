@@ -1,0 +1,12 @@
+<div *ngIf="menuPanelOpenState.isOpen | async" class="menu">
+  <ng-container *ngFor="let route of menuRoutes">
+    <a
+      (click)="activeCard.set(route)"
+      [ngClass]="(activeCard.card | async) === route ? 'active' : ''"
+      [routerLink]="route.route"
+      class="route"
+    >
+      {{ route.label }}
+    </a>
+  </ng-container>
+</div>

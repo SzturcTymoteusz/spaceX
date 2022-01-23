@@ -1,1 +1,13 @@
-<router-outlet></router-outlet>
+<div class="container">
+  <div class="header">
+    <space-x-header></space-x-header>
+  </div>
+
+  <div class="content">
+    <space-x-menu [ngClass]="(menuPanelOpenState.isOpen | async) ? 'open' : 'close'" class="menu"></space-x-menu>
+
+    <div [ngClass]="(menuPanelOpenState.isOpen | async) ? 'close' : 'open'" class="pages">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

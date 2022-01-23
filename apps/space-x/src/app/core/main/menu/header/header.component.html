@@ -1,0 +1,18 @@
+<div class="header">
+  <div (click)="menuPanelOpenState.toggle()" class="menu-icon">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <div class="content">
+    <div class="logo">
+      <img src="./assets/images/spacex-logo.jpg">
+    </div>
+    <div class="user-mail">
+      {{ authentication.user?.email}}
+    </div>
+  </div>
+
+  <div (click)="authentication.logout()" class="logout-icon">
+    <i class="fas fa-sign-out-alt"></i>
+  </div>
+</div>

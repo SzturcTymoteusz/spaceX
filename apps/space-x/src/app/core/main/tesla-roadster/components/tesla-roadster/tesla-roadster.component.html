@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="header">
+    <div class="title">
+      {{ roadsterInfo.name}}
+    </div>
+
+    <button (click)="goBack()" class="backButton" mat-button>
+      Back
+    </button>
+  </div>
+
+  <div *ngIf="roadsterInfo.flickr_images[0]" class="image">
+    <img [src]="roadsterInfo.flickr_images[0]">
+  </div>
+
+  <div class="description">
+    {{roadsterInfo.details}}
+  </div>
+
+  <div class="launch-data">
+    Launch date: {{roadsterInfo.launch_date_utc | date}}
+  </div>
+
+</div>

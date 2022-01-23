@@ -10,6 +10,7 @@ import { ApiUrlInterceptor } from './commanders/interceptor/api-url/api-url.inte
 import { ErrorInterceptor } from './commanders/interceptor/error/error.interceptor';
 import { AuthInterceptor } from './commanders/interceptor/auth/auth.interceptor';
 import { BackendInterceptor } from './commanders/interceptor/backend/backend.interceptor';
+import { MENU_ROUTES, MenuRoutes } from './lib/config/menu-config';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,7 @@ import { BackendInterceptor } from './commanders/interceptor/backend/backend.int
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: BackendInterceptor, multi: true },
+    { provide: MENU_ROUTES, useValue: MenuRoutes },
   ],
   bootstrap: [AppComponent],
 })

@@ -1,0 +1,282 @@
+.container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 24px 0;
+
+    .title {
+      font-size: 32px;
+      line-height: 56px;
+      margin-right: 24px;
+    }
+
+    .backButton {
+      background-color: #000000;
+      color: white;
+      width: 100px;
+      height: 40px;
+      margin: auto 0;
+    }
+  }
+
+  .listing {
+
+    .search {
+      position: relative;
+      z-index: 0;
+      padding: 24px;
+
+      .form {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .row {
+          display: flex;
+          flex-direction: row;
+
+
+          &:first-of-type {
+            flex-grow: 1;
+          }
+        }
+
+        .flightNumber mat-form-field {
+          width: 150px !important;
+          margin-right: 24px;
+        }
+
+        .name {
+          flex-grow: 1;
+          margin-right: 24px;
+
+          mat-form-field {
+            width: 100%;
+            min-width: 300px;
+          }
+        }
+
+        .success mat-form-field {
+          width: 100px !important;
+        }
+
+        @media (max-width: 1000px) {
+          flex-direction: column;
+
+          .row {
+            width: 100%;
+          }
+
+          .name {
+            margin-right: 0;
+
+            & mat-form-field {
+              width: 100% !important;
+              min-width: 100% !important;
+            }
+          }
+
+          .flightNumber {
+            margin-right: 24px;
+
+            & mat-form-field {
+              width: 100% !important;
+              min-width: 150px !important;
+            }
+          }
+
+          .success {
+            flex-grow: 1;
+            margin-right: 0;
+
+            & mat-form-field {
+              width: 100% !important;
+              min-width: 100px !important;
+            }
+          }
+        }
+
+
+        @media (max-width: 810px) {
+          .row {
+            flex-direction: column;
+
+          }
+
+          .flightNumber {
+            margin-right: 0;
+
+            mat-form-field {
+              width: 100% !important;
+              min-width: 100% !important;
+            }
+          }
+
+          .success mat-form-field {
+            width: 100% !important;
+            min-width: 100% !important;
+          }
+        }
+
+      }
+
+      .action-buttons {
+        display: flex;
+        justify-content: flex-end;
+
+        button {
+          background-color: #000000;
+          color: white;
+          width: 100px;
+          height: 40px;
+          margin-left: 24px;
+        }
+      }
+    }
+
+    .loading, .no-content {
+      display: block;
+      width: auto;
+      overflow: hidden;
+    }
+
+
+    .table-responsive {
+      display: block;
+      width: auto;
+      overflow-x: auto;
+    }
+
+    mat-progress-bar {
+      margin: 24px;
+      width: calc(100% - 48px);
+      box-sizing: border-box;
+    }
+
+    .no-content-info {
+      margin: 24px;
+      width: calc(100% - 48px);
+      box-sizing: border-box;
+    }
+
+    table {
+      width: 100%;
+      display: table;
+      border-collapse: collapse;
+      position: relative;
+      z-index: 2;
+
+      th {
+        padding-right: 12px;
+      }
+
+      .done {
+        color: green;
+      }
+
+      .clear {
+        color: red
+      }
+
+      .mat-header-cell, .mat-cell {
+        padding-left: 24px;
+      }
+
+      .mat-header-cell .search-icon {
+        font-size: 32px;
+        position: relative;
+        top: 6px;
+        left: 20px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+
+      .cdk-column-id {
+        width: 200px;
+        min-width: 200px;
+        padding-right: 24px;
+      }
+
+      .cdk-column-name {
+        min-width: 180px;
+      }
+
+      .cdk-column-flight_number {
+        width: 50px;
+        min-width: 50px;
+        max-width: 50px;
+      }
+
+      .cdk-column-success {
+        width: 50px;
+        min-width: 50px;
+        max-width: 50px;
+      }
+
+      .cdk-column-actions {
+        width: 80px;
+        min-width: 80px;
+        max-width: 80px;
+        position: relative;
+        top: 0;
+        left: 0;
+
+        &::before {
+          display: block;
+          content: '';
+          position: absolute;
+          width: 4px;
+          height: 100%;
+          top: 0;
+          left: 0;
+          background: linear-gradient(to right, rgba(0, 0, 0, 0) 5%, rgba(0, 0, 0, .05) 57%, rgba(0, 0, 0, .10) 100%);
+        }
+
+        .details {
+          background-color: #000000;
+          color: white;
+        }
+      }
+    }
+
+    mat-paginator {
+      position: relative;
+      z-index: 10;
+    }
+  }
+}
+
+mat-form-field {
+  &.ng-invalid.ng-touched,
+  .mat-form-field-invalid {
+    animation: error-show;
+    animation-duration: 0.3s;
+    margin-bottom: 25px;
+  }
+}
+
+@keyframes error-show {
+  from {
+    margin-bottom: 0;
+  }
+  to {
+    margin-bottom: 25px;
+  }
+}
+
+.full-width {
+  .mat-form-field {
+    width: 100% !important;
+  }
+}

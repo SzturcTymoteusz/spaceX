@@ -22,6 +22,13 @@ export class LoginFormService implements LoginForm {
     return this._form.get('password') as FormControl;
   }
 
+  reset(): void {
+    this._form.reset({
+      email: null,
+      password: null,
+    });
+  }
+
   private prepareForm() {
     this._form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
