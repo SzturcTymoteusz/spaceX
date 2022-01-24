@@ -4,6 +4,7 @@
   background-color: #000000;
   display: flex;
   align-items: center;
+  overflow: hidden;
 
   .menu-icon {
     color: #ffffff;
@@ -20,6 +21,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 
 
     .logo {
@@ -37,6 +39,8 @@
       font-size: 16px;
       margin-left: 48px;
       flex-grow: 1;
+      position: relative;
+      z-index: 10;
     }
   }
 
@@ -54,8 +58,17 @@
     .content {
       flex-direction: column;
 
+      .logo {
+        height: 50px !important;
+
+        img {
+          width: 100%;
+        }
+      }
+
       .user-mail {
         margin-left: 0;
+        margin-bottom: 12px;
       }
     }
   }
