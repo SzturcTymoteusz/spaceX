@@ -13,9 +13,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { SearchComponent } from './components/search/search.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
-  declarations: [ListingComponent],
+  declarations: [ListingComponent, SearchComponent, PaginatorComponent, TableComponent],
   imports: [
     CommonModule,
     ListingRoutingModule,

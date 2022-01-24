@@ -1,0 +1,10 @@
+<mat-paginator
+  (page)="setNewPaginationAndInvokeGetLaunches($event)"
+  [length]="numberAllLaunch"
+  [pageIndex]="pagination.settings.pageNumber - 1"
+  [pageSizeOptions]="pagination.defaultPageSizeOptions"
+  [pageSize]="pagination.settings.amountItemsOnPage"
+  aria-label="Select page of periodic elements"
+  class="mat-elevation-z8"
+  showFirstLastButtons>
+</mat-paginator>

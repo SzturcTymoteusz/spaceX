@@ -1,0 +1,94 @@
+mat-progress-bar {
+  margin: 24px;
+  width: calc(100% - 48px);
+  box-sizing: border-box;
+}
+
+.no-content-info {
+  margin: 24px;
+  width: calc(100% - 48px);
+  box-sizing: border-box;
+}
+
+table {
+  width: 100%;
+  display: table;
+  border-collapse: collapse;
+  position: relative;
+  z-index: 2;
+
+  th {
+    padding-right: 12px;
+  }
+
+  .done {
+    color: green;
+  }
+
+  .clear {
+    color: red
+  }
+
+  .mat-header-cell, .mat-cell {
+    padding-left: 24px;
+  }
+
+  .mat-header-cell .search-icon {
+    font-size: 32px;
+    position: relative;
+    top: 6px;
+    left: 20px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+
+  .cdk-column-id {
+    width: 200px;
+    min-width: 200px;
+    padding-right: 24px;
+  }
+
+  .cdk-column-name {
+    min-width: 180px;
+  }
+
+  .cdk-column-flight_number {
+    width: 50px;
+    min-width: 50px;
+    max-width: 50px;
+  }
+
+  .cdk-column-success {
+    width: 50px;
+    min-width: 50px;
+    max-width: 50px;
+  }
+
+  .cdk-column-actions {
+    width: 80px;
+    min-width: 80px;
+    max-width: 80px;
+    position: relative;
+    top: 0;
+    left: 0;
+
+    &::before {
+      display: block;
+      content: '';
+      position: absolute;
+      width: 4px;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0) 5%, rgba(0, 0, 0, .05) 57%, rgba(0, 0, 0, .10) 100%);
+    }
+
+    .details {
+      background-color: #000000;
+      color: white;
+    }
+  }
+}

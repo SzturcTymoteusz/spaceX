@@ -1,0 +1,131 @@
+.form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .row {
+    display: flex;
+    flex-direction: row;
+
+
+    &:first-of-type {
+      flex-grow: 1;
+    }
+  }
+
+  .flightNumber mat-form-field {
+    width: 150px !important;
+    margin-right: 24px;
+  }
+
+  .name {
+    flex-grow: 1;
+    margin-right: 24px;
+
+    mat-form-field {
+      width: 100%;
+      min-width: 300px;
+    }
+  }
+
+  .success mat-form-field {
+    width: 100px !important;
+  }
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+
+    .row {
+      width: 100%;
+    }
+
+    .name {
+      margin-right: 0;
+
+      & mat-form-field {
+        width: 100% !important;
+        min-width: 100% !important;
+      }
+    }
+
+    .flightNumber {
+      margin-right: 24px;
+
+      & mat-form-field {
+        width: 100% !important;
+        min-width: 150px !important;
+      }
+    }
+
+    .success {
+      flex-grow: 1;
+      margin-right: 0;
+
+      & mat-form-field {
+        width: 100% !important;
+        min-width: 100px !important;
+      }
+    }
+  }
+
+
+  @media (max-width: 810px) {
+    .row {
+      flex-direction: column;
+
+    }
+
+    .flightNumber {
+      margin-right: 0;
+
+      mat-form-field {
+        width: 100% !important;
+        min-width: 100% !important;
+      }
+    }
+
+    .success mat-form-field {
+      width: 100% !important;
+      min-width: 100% !important;
+    }
+  }
+
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    background-color: #000000;
+    color: white;
+    width: 100px;
+    height: 40px;
+    margin-left: 24px;
+  }
+}
+
+
+mat-form-field {
+  &.ng-invalid.ng-touched,
+  .mat-form-field-invalid {
+    animation: error-show;
+    animation-duration: 0.3s;
+    margin-bottom: 25px;
+  }
+}
+
+@keyframes error-show {
+  from {
+    margin-bottom: 0;
+  }
+  to {
+    margin-bottom: 25px;
+  }
+}
+
+.full-width {
+  .mat-form-field {
+    width: 100% !important;
+  }
+}

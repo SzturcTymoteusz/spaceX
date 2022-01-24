@@ -1,0 +1,47 @@
+<form [formGroup]="searchForm.form" class="form">
+  <div class="row">
+    <div class="name">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Name</mat-label>
+        <input
+          [formControl]="searchForm.name"
+          matInput
+          type="text"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="flightNumber">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Flight number</mat-label>
+        <input
+          [formControl]="searchForm.flightNumber"
+          matInput
+          type="number"
+        />
+        <mat-error *ngIf="searchForm.flightNumber.hasError('min')">Number must be greater than 0</mat-error>
+      </mat-form-field>
+    </div>
+
+
+    <div class="success">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Success</mat-label>
+        <mat-select [formControl]="searchForm.success">
+          <mat-option [value]="null"></mat-option>
+          <mat-option [value]="false">False</mat-option>
+          <mat-option [value]="true">True</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</form>
+<div class="action-buttons">
+  <button (click)="isOpenSearch.toggle()" class="closeButton" mat-button>
+    Close
+  </button>
+  <button (click)="manageSearch.manage()" class="searchButton" mat-button>
+    Search
+  </button>
+</div>

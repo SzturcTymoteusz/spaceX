@@ -12,54 +12,7 @@
   <div class="listing">
 
     <div *ngIf="(isOpenSearch.isOpen | async) === true" class="mat-elevation-z8 search">
-      <form [formGroup]="searchForm.form" class="form">
-        <div class="row">
-          <div class="name">
-            <mat-form-field appearance="outline" class="full-width">
-              <mat-label>Name</mat-label>
-              <input
-                [formControl]="searchForm.name"
-                matInput
-                type="text"
-              />
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="row">
-          <div class="flightNumber">
-            <mat-form-field appearance="outline" class="full-width">
-              <mat-label>Flight number</mat-label>
-              <input
-                [formControl]="searchForm.flightNumber"
-                matInput
-                type="number"
-              />
-              <mat-error *ngIf="searchForm.flightNumber.hasError('min')">Number must be greater than 0</mat-error>
-            </mat-form-field>
-          </div>
-
-
-          <div class="success">
-            <mat-form-field appearance="outline" class="full-width">
-              <mat-label>Success</mat-label>
-              <mat-select [formControl]="searchForm.success">
-                <mat-option [value]="null"></mat-option>
-                <mat-option [value]="false">False</mat-option>
-                <mat-option [value]="true">True</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-        </div>
-
-      </form>
-      <div class="action-buttons">
-        <button (click)="isOpenSearch.toggle()" class="closeButton" mat-button>
-          Close
-        </button>
-        <button (click)="manageSearch.manage()" class="searchButton" mat-button>
-          Search
-        </button>
-      </div>
+      <space-x-search></space-x-search>
     </div>
     <div
       [ngClass]="{
@@ -67,61 +20,8 @@
       'table-responsive': (((manageGetLaunches.isLoading | async)  === false && (dataSource.length !== 0))),
       'no-content': (dataSource.length === 0)}"
       class="mat-elevation-z8">
-      <table (matSortChange)="setNewSortSettingsAndInvokeGetLaunches($event)"
-             [dataSource]="(manageGetLaunches.isLoading | async)  === true ? [] : dataSource" mat-table
-             matSort>
-        <ng-container matColumnDef="id">
-          <th *matHeaderCellDef mat-header-cell>Id</th>
-          <td *matCellDef="let element" mat-cell> {{element.id}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="name">
-          <th *matHeaderCellDef mat-header-cell mat-sort-header> Name</th>
-          <td *matCellDef="let element" mat-cell> {{element.name}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="success">
-          <th *matHeaderCellDef mat-header-cell mat-sort-header> Success</th>
-          <td *matCellDef="let element" [ngClass]=" successFilter.filter(element.success) " mat-cell>
-            <mat-icon>
-              {{successFilter.filter(element.success)}}
-            </mat-icon>
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="flight_number">
-          <th *matHeaderCellDef mat-header-cell mat-sort-header> Flight number</th>
-          <td *matCellDef="let element" mat-cell> {{element.flight_number}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="actions" stickyEnd>
-          <th *matHeaderCellDef mat-header-cell>
-            <mat-icon (click)="isOpenSearch.toggle()" class="search-icon"> search</mat-icon>
-          </th>
-          <td *matCellDef="let element" mat-cell>
-            <button (click)="navigateToDetails(element)" class="details" mat-button>Details</button>
-          </td>
-        </ng-container>
-
-        <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
-        <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
-      </table>
-      <mat-progress-bar
-        *ngIf="(manageGetLaunches.isLoading | async)  === true"
-        mode="indeterminate"></mat-progress-bar>
-      <div *ngIf="dataSource.length === 0 && (manageGetLaunches.isLoading | async)  === false" class="no-content-info">
-        No matching records have been found
-      </div>
+      <space-x-table [dataSource]="dataSource"></space-x-table>
     </div>
-    <mat-paginator
-      (page)="setNewPaginationAndInvokeGetLaunches($event)"
-      [length]="numberAllLaunch"
-      [pageIndex]="pagination.settings.pageNumber - 1"
-      [pageSizeOptions]="pagination.defaultPageSizeOptions"
-      [pageSize]="pagination.settings.amountItemsOnPage"
-      aria-label="Select page of periodic elements"
-      class="mat-elevation-z8"
-      showFirstLastButtons>
-    </mat-paginator>
+    <space-x-paginator [numberAllLaunch]="numberAllLaunch"></space-x-paginator>
   </div>
 </div>

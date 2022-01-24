@@ -1,0 +1,48 @@
+<table (matSortChange)="setNewSortSettingsAndInvokeGetLaunches($event)"
+       [dataSource]="(manageGetLaunches.isLoading | async)  === true ? [] : dataSource" mat-table
+       matSort>
+  <ng-container matColumnDef="id">
+    <th *matHeaderCellDef mat-header-cell>Id</th>
+    <td *matCellDef="let element" mat-cell> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th *matHeaderCellDef mat-header-cell mat-sort-header="name" sortActionDescription="Sort by name"> Name</th>
+    <td *matCellDef="let element" mat-cell> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="success">
+    <th *matHeaderCellDef mat-header-cell mat-sort-header="success" sortActionDescription="Sort by success"> Success
+    </th>
+    <td *matCellDef="let element" [ngClass]=" successFilter.filter(element.success) " mat-cell>
+      <mat-icon>
+        {{successFilter.filter(element.success)}}
+      </mat-icon>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="flight_number">
+    <th *matHeaderCellDef mat-header-cell mat-sort-header="flight_number" sortActionDescription="Sort by flight number">
+      Flight number
+    </th>
+    <td *matCellDef="let element" mat-cell> {{element.flight_number}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions" stickyEnd>
+    <th *matHeaderCellDef mat-header-cell>
+      <mat-icon (click)="isOpenSearch.toggle()" class="search-icon"> search</mat-icon>
+    </th>
+    <td *matCellDef="let element" mat-cell>
+      <button (click)="navigateToDetails(element)" class="details" mat-button>Details</button>
+    </td>
+  </ng-container>
+
+  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+  <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+</table>
+<mat-progress-bar
+  *ngIf="(manageGetLaunches.isLoading | async)  === true"
+  mode="indeterminate"></mat-progress-bar>
+<div *ngIf="dataSource.length === 0 && (manageGetLaunches.isLoading | async)  === false" class="no-content-info">
+  No matching records have been found
+</div>
